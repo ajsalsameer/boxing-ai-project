@@ -1,8 +1,21 @@
+# --- System & Environment (Do NOT Upload) ---
+venv/
 __pycache__/
 *.pyc
-.env
-.venv
-venv/
-data/
-synth_data/
+.DS_Store
+
+# --- Massive Data (Do NOT Upload) ---
+# We keep the folder structure but ignore the actual video files
+data/raw_videos/**/*
+data/clips/**/*
+data/synthetic/**/*
+data/keypoints/**/*
+
+# --- Large Models ---
 *.onnx
+*.pth
+*.pt
+hologram_ui/unity_export/models_onnx/**/*
+
+# --- Local Configs ---
+config/paths.yaml
