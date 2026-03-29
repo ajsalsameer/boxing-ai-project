@@ -1,0 +1,317 @@
+.page {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 380px 300px;
+  gap: 14px;
+  padding: 14px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── Column labels ── */
+.colLabel {
+  font-family: var(--font-hud);
+  font-size: 9px; letter-spacing: 4px;
+  color: rgba(0,220,255,0.4);
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+/* ── Camera column ── */
+.camCol { display:flex; flex-direction:column; min-height:0; }
+.camWrap {
+  flex: 1; border: 1px solid var(--c-border);
+  overflow: hidden; min-height: 0; position: relative;
+}
+.camFooter { margin-top: 12px; flex-shrink: 0; }
+
+/* Recording overlay on camera */
+.recOverlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.75);
+  border-top: 1px solid var(--neon-red);
+  padding: 12px 16px;
+  display: flex; align-items: center; gap: 12px;
+  backdrop-filter: blur(4px);
+}
+.recDot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--neon-red);
+  box-shadow: 0 0 10px var(--neon-red);
+  animation: pulse-glow 0.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.recCombo {
+  font-family: var(--font-hud);
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 2px; color: #fff;
+  flex: 1;
+}
+.recSavedCount {
+  font-family: var(--font-hud);
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--neon-green);
+  white-space: nowrap;
+}
+
+/* ── Progress tracker (top of steps col) ── */
+.progressWrap {
+  display: flex; align-items: center;
+  margin-bottom: 18px; flex-shrink: 0;
+}
+.progressStep {
+  display: flex; align-items: center; flex: 1;
+  position: relative;
+}
+.progressStep:last-child { flex: 0; }
+.progressDot {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid var(--c-border-hi);
+  background: var(--c-panel);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-hud); font-size: 10px; font-weight: 700;
+  color: #444; flex-shrink: 0;
+  transition: all 0.3s;
+  z-index: 1;
+}
+.progressLabel {
+  position: absolute; top: 34px; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-hud); font-size: 7px; letter-spacing: 2px;
+  color: #444; white-space: nowrap;
+  transition: color 0.3s;
+}
+.progressLine {
+  flex: 1; height: 1px;
+  background: var(--c-border);
+  margin: 0 4px;
+  transition: background 0.3s;
+}
+.progressDone .progressDot {
+  border-color: var(--neon-blue);
+  background: rgba(0,220,255,0.1);
+  color: var(--neon-blue);
+  box-shadow: 0 0 10px rgba(0,220,255,0.2);
+}
+.progressDone .progressLabel { color: var(--neon-blue); }
+.progressDone .progressLine  { background: var(--neon-blue); opacity: 0.4; }
+
+/* ── Steps column ── */
+.stepsCol {
+  display: flex; flex-direction: column;
+  min-height: 0; padding-top: 0;
+  overflow: hidden;
+}
+
+/* ── Generic card ── */
+.card {
+  flex: 1; padding: 24px 22px;
+  display: flex; flex-direction: column;
+  gap: 14px; overflow-y: auto; min-height: 0;
+}
+.cardTitle {
+  font-family: var(--font-hud); font-size: 11px;
+  font-weight: 700; letter-spacing: 4px;
+  color: var(--neon-blue);
+  text-shadow: 0 0 12px rgba(0,220,255,0.3);
+  flex-shrink: 0;
+}
+.cardDesc {
+  font-family: var(--font-body); font-size: 13px;
+  line-height: 1.7; color: rgba(204,214,246,0.55);
+  flex-shrink: 0;
+}
+.cardDesc strong { color: rgba(204,214,246,0.85); }
+
+/* ── Login ── */
+.inputRow { display: flex; gap: 10px; flex-shrink: 0; }
+.input {
+  flex: 1; background: rgba(0,0,0,0.5);
+  border: 1px solid var(--c-border-hi);
+  color: #fff; padding: 12px 16px;
+  font-family: var(--font-mono); font-size: 14px;
+  letter-spacing: 2px; outline: none;
+  transition: border-color 0.2s;
+}
+.input:focus { border-color: var(--neon-blue); box-shadow: 0 0 12px rgba(0,220,255,0.1); }
+.input::placeholder { color: #333; }
+.err { font-family: var(--font-hud); font-size: 10px; letter-spacing: 2px; color: var(--neon-red); }
+.hint { font-family: var(--font-hud); font-size: 9px; letter-spacing: 2px; color: #333; }
+
+/* ── User badge ── */
+.userBadge {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; background: rgba(0,220,255,0.05);
+  border: 1px solid var(--c-border-hi); flex-shrink: 0;
+}
+.userIcon { font-size: 18px; }
+.userBadge > span:nth-child(2) {
+  font-family: var(--font-hud); font-size: 13px;
+  font-weight: 700; letter-spacing: 3px; color: #fff;
+  flex: 1;
+}
+.comboCount {
+  font-family: var(--font-hud); font-size: 9px;
+  letter-spacing: 2px; color: var(--neon-green) !important;
+}
+
+/* ── Example combos ── */
+.examplesBox {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--c-border);
+  padding: 14px 16px; flex-shrink: 0;
+}
+.examplesLabel {
+  font-family: var(--font-hud); font-size: 8px;
+  letter-spacing: 3px; color: #444; margin-bottom: 10px;
+}
+.exampleRow {
+  display: flex; align-items: center;
+  flex-wrap: wrap; gap: 4px; margin-bottom: 6px;
+}
+.moveChip {
+  font-family: var(--font-hud); font-size: 9px; font-weight: 700;
+  letter-spacing: 2px; padding: 3px 10px; border: 1px solid;
+}
+.moveChip.jab      { color: var(--move-jab);      border-color: var(--move-jab);      background: rgba(255,234,0,0.08); }
+.moveChip.cross    { color: var(--move-cross);    border-color: var(--move-cross);    background: rgba(0,220,255,0.08); }
+.moveChip.hook     { color: var(--move-hook);     border-color: var(--move-hook);     background: rgba(0,230,118,0.08); }
+.moveChip.uppercut { color: var(--move-uppercut); border-color: var(--move-uppercut); background: rgba(213,0,249,0.08); }
+.arrow { color: #444; font-size: 11px; margin: 0 2px; }
+
+/* ── Buttons ── */
+.btnRow { display: flex; gap: 10px; flex-shrink: 0; flex-wrap: wrap; }
+.backBtn { margin-top: 4px; }
+.needMore {
+  font-family: var(--font-hud); font-size: 9px;
+  letter-spacing: 2px; color: var(--neon-yellow);
+  text-align: center; padding: 8px;
+  border: 1px solid rgba(255,234,0,0.2);
+  background: rgba(255,234,0,0.04);
+}
+
+/* ── Transitions ── */
+.transBox {
+  background: rgba(0,0,0,0.3); border: 1px solid var(--c-border);
+  padding: 14px 16px; flex-shrink: 0;
+}
+.transRow {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+}
+.transPair {
+  font-family: var(--font-mono); font-size: 11px;
+  color: rgba(204,214,246,0.7); width: 140px; flex-shrink: 0;
+}
+.transBar {
+  flex: 1; height: 6px; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.transBarFill { height: 100%; background: var(--neon-blue); transition: width 0.4s; }
+.transCount {
+  font-family: var(--font-hud); font-size: 9px;
+  color: #555; width: 28px; text-align: right; flex-shrink: 0;
+}
+
+/* ── Training progress bar ── */
+.progressBarWrap {
+  background: rgba(0,0,0,0.4); border: 1px solid var(--c-border);
+  padding: 14px 16px; flex-shrink: 0;
+}
+.progressBarLabel {
+  font-family: var(--font-hud); font-size: 9px;
+  letter-spacing: 3px; color: var(--neon-green); margin-bottom: 8px;
+}
+.progressBarTrack {
+  height: 6px; background: rgba(0,230,118,0.08);
+  border: 1px solid rgba(0,230,118,0.2); margin-bottom: 6px;
+}
+.progressBarFill {
+  height: 100%; background: var(--neon-green);
+  box-shadow: 0 0 8px var(--neon-green);
+  transition: width 0.3s ease;
+}
+.progressBarMsg {
+  font-family: var(--font-mono); font-size: 10px;
+  color: rgba(204,214,246,0.4);
+}
+.trainDone {
+  font-family: var(--font-hud); font-size: 12px; letter-spacing: 2px;
+  color: var(--neon-green); text-align: center; padding: 14px;
+  border: 1px solid rgba(0,230,118,0.3);
+  background: rgba(0,230,118,0.06);
+  text-shadow: 0 0 10px var(--neon-green);
+}
+
+/* ── Ready step ── */
+.readyIcon { font-size: 52px; text-align: center; flex-shrink: 0; }
+.readyStats {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; flex-shrink: 0;
+}
+.readyStat {
+  background: rgba(0,0,0,0.4); border: 1px solid var(--c-border);
+  padding: 16px; text-align: center;
+}
+.readyStatVal { font-family: var(--font-hud); font-size: 32px; font-weight: 700; }
+.readyStatLabel {
+  font-family: var(--font-hud); font-size: 8px;
+  letter-spacing: 3px; color: #444; margin-top: 6px;
+}
+
+/* ── Log column ── */
+.logCol { display: flex; flex-direction: column; gap: 10px; min-height: 0; overflow: hidden; }
+.logPanel { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+.logLines {
+  flex: 1; overflow-y: auto; padding: 12px 14px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.logLine {
+  font-family: var(--font-mono); font-size: 10px;
+  color: rgba(204,214,246,0.55); letter-spacing: 0.5px;
+  line-height: 1.5; word-break: break-all;
+  animation: slide-up 0.15s ease;
+}
+.logEmpty {
+  font-family: var(--font-hud); font-size: 9px;
+  letter-spacing: 2px; color: #333; text-align: center;
+  margin-top: 20px;
+}
+
+/* ── Saved combos panel ── */
+.savedPanel { flex-shrink: 0; max-height: 180px; overflow: hidden; }
+.savedList { overflow-y: auto; max-height: 130px; padding: 0 14px 10px; }
+.savedCombo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 10px;
+  color: rgba(204,214,246,0.6); padding: 4px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  animation: pop-in 0.2s ease;
+}
+.savedIdx { font-family: var(--font-hud); font-size: 8px; color: #444; width: 20px; flex-shrink: 0; }
+
+/* ── Move distribution ── */
+.distPanel { flex-shrink: 0; }
+.distBars { padding: 0 14px 14px; display: flex; flex-direction: column; gap: 8px; }
+.distRow { display: flex; align-items: center; gap: 8px; }
+.distName { font-family: var(--font-hud); font-size: 8px; letter-spacing: 2px; width: 56px; flex-shrink: 0; }
+.distTrack { flex: 1; height: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); }
+.distFill { height: 100%; transition: width 0.4s; }
+.distPct { font-family: var(--font-hud); font-size: 8px; color: #555; width: 28px; text-align: right; }
+
+/* ── BUG FIX: progressDone applied to active step wrappers ── */
+.progressDone .progressDot {
+  border-color: var(--neon-blue);
+  background: rgba(0, 220, 255, 0.08);
+  color: var(--neon-blue);
+  box-shadow: 0 0 12px rgba(0, 220, 255, 0.25);
+}
+.progressDone .progressLabel {
+  color: var(--neon-blue);
+}
+.progressDone .progressLine {
+  background: var(--neon-blue);
+  opacity: 0.5;
+}
+
+/* ── progressDone: top-level class applied to completed steps ── */
+.progressDone { /* wrapper — styling applied via compound selectors above */ }

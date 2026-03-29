@@ -1,0 +1,388 @@
+.wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.page {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 300px 360px;
+  gap: 14px;
+  padding: 14px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Column headers */
+.colHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.colLabel {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: rgba(0, 220, 255, 0.4);
+}
+
+.fps {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: rgba(204, 214, 246, 0.3);
+}
+
+/* Camera col */
+.camCol {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.camWrap {
+  flex: 1;
+  border: 1px solid var(--c-border);
+  overflow: hidden;
+  min-height: 0;
+}
+
+.camFooter {
+  margin-top: 12px;
+  flex-shrink: 0;
+}
+
+/* HUD col */
+.hudCol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Move box */
+.moveBox {
+  padding: 20px 18px;
+  text-align: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.moveActive {
+  animation: pop-in 0.12s ease both;
+}
+
+.moveLabel {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: rgba(204, 214, 246, 0.3);
+  margin-bottom: 10px;
+}
+
+.moveText {
+  font-family: var(--font-hud);
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  min-height: 52px;
+  line-height: 1;
+}
+
+.moveLine {
+  height: 2px;
+  margin-top: 14px;
+  border-radius: 1px;
+}
+
+.confBadge {
+  display: inline-block;
+  font-family: var(--font-hud);
+  font-size: 11px;
+  letter-spacing: 2px;
+  border: 1px solid;
+  padding: 2px 10px;
+  margin-top: 8px;
+}
+
+.waitingMsg {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #333;
+  padding: 0 16px 14px;
+}
+
+/* Bars */
+.barsBox {
+  flex-shrink: 0;
+}
+
+.bars {
+  padding: 0 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+/* Idle bar is visually separated from punch bars */
+.barRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.barRowIdle {
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  opacity: 0.6;
+}
+
+.barName {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 2px;
+  width: 54px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.barTrack {
+  flex: 1;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  transition: none;
+  position: relative;
+}
+
+.barFill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.barVal {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  width: 32px;
+  flex-shrink: 0;
+}
+
+/* Prediction */
+.predBox {
+  flex-shrink: 0;
+  padding-bottom: 16px;
+  text-align: center;
+}
+
+.predMove {
+  font-family: var(--font-hud);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  margin-top: 6px;
+}
+
+.predConf {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.predEmpty {
+  font-family: var(--font-hud);
+  font-size: 14px;
+  color: #2a3450;
+  padding: 10px 0;
+  letter-spacing: 2px;
+}
+
+.predModel {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #334466;
+  margin-top: 2px;
+}
+
+/* Combo */
+.comboBox {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.comboStrip {
+  padding: 4px 16px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.comboEmpty {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.comboPill {
+  font-family: var(--font-hud);
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 4px 12px;
+  border: 1px solid;
+  animation: pop-in 0.15s ease;
+}
+
+/* Tech col */
+.techCol {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.techWrap {
+  flex: 1;
+  border: 1px solid var(--c-border);
+  overflow: hidden;
+  min-height: 0;
+  position: relative;
+}
+
+/* Animation toggle button */
+.animToggle {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 3px;
+  padding: 3px 10px;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.animToggle:hover {
+  opacity: 0.8;
+}
+
+/* Animation off placeholder */
+.animOff {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--c-surface);
+}
+
+.animOffIcon {
+  font-size: 28px;
+  color: #1a2030;
+}
+
+.animOffText {
+  font-family: var(--font-hud);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #1e2840;
+}
+
+.animOffSub {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #151d2a;
+}
+
+/* User/model banners */
+.noUserBanner {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--neon-yellow);
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 234, 0, 0.25);
+  background: rgba(255, 234, 0, 0.05);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.noUserLink {
+  text-decoration: underline;
+}
+
+.userBanner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: rgba(204, 214, 246, 0.5);
+  padding: 6px 12px;
+  border: 1px solid var(--c-border);
+  background: rgba(0, 220, 255, 0.03);
+  flex-shrink: 0;
+}
+
+.bannerRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gruLabel {
+  color: var(--neon-green);
+}
+
+/* Markov quality badge */
+.markovBadge {
+  font-family: var(--font-hud);
+  font-size: 7px;
+  letter-spacing: 2px;
+  padding: 2px 7px;
+  border: 1px solid;
+  opacity: 0.8;
+}
+
+/* Offline banner */
+.offlineBanner {
+  background: rgba(255, 23, 68, 0.08);
+  border: 1px solid rgba(255, 23, 68, 0.35);
+  color: #ff6b6b;
+  font-family: var(--font-hud);
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 10px 18px;
+  flex-shrink: 0;
+}
+
+.offlineBanner code {
+  color: #ffea00;
+  font-family: var(--font-mono);
+  background: rgba(255, 234, 0, 0.08);
+  padding: 1px 6px;
+}

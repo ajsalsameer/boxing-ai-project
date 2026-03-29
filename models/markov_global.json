@@ -1,0 +1,127 @@
+{
+  "transitions": {
+    "jab|uppercut": {
+      "jab": 19.0,
+      "cross": 2.0,
+      "hook": 5.0
+    },
+    "uppercut|jab": {
+      "cross": 12.0,
+      "uppercut": 10.0,
+      "hook": 7.0,
+      "jab": 5.0
+    },
+    "jab|cross": {
+      "hook": 18.0,
+      "jab": 11.0,
+      "cross": 3.0,
+      "uppercut": 2.0
+    },
+    "cross|hook": {
+      "hook": 4.8464,
+      "cross": 15.0,
+      "jab": 14.0,
+      "uppercut": 9.0
+    },
+    "hook|hook": {
+      "uppercut": 2.0,
+      "cross": 3.92,
+      "hook": 2.0,
+      "jab": 3.0
+    },
+    "hook|uppercut": {
+      "cross": 4.0,
+      "hook": 15.0,
+      "jab": 12.0,
+      "uppercut": 3.0
+    },
+    "uppercut|cross": {
+      "uppercut": 3.0,
+      "hook": 7.0,
+      "jab": 4.0
+    },
+    "cross|uppercut": {
+      "cross": 4.0,
+      "hook": 2.0,
+      "uppercut": 1.0,
+      "jab": 3.0
+    },
+    "hook|cross": {
+      "hook": 14.0,
+      "uppercut": 4.0,
+      "jab": 4.0,
+      "cross": 4.0
+    },
+    "hook|jab": {
+      "hook": 12.0,
+      "cross": 9.0,
+      "uppercut": 9.0,
+      "jab": 4.0
+    },
+    "jab|hook": {
+      "cross": 7.0,
+      "hook": 3.0,
+      "uppercut": 10.0,
+      "jab": 10.0
+    },
+    "uppercut|hook": {
+      "uppercut": 12.0,
+      "jab": 8.0,
+      "hook": 1.0,
+      "cross": 2.0
+    },
+    "cross|jab": {
+      "hook": 7.0,
+      "cross": 8.0,
+      "jab": 4.0,
+      "uppercut": 3.0
+    },
+    "uppercut|uppercut": {
+      "cross": 2.0,
+      "uppercut": 2.0,
+      "hook": 1.0,
+      "jab": 1.0
+    },
+    "jab|jab": {
+      "cross": 6.0,
+      "hook": 3.0,
+      "uppercut": 3.0,
+      "jab": 1.0
+    },
+    "cross|cross": {
+      "uppercut": 2.0,
+      "hook": 2.0,
+      "jab": 3.0,
+      "cross": 1.0
+    }
+  },
+  "first_order": {
+    "jab": {
+      "uppercut": 27.0,
+      "cross": 35.0,
+      "hook": 30.0,
+      "jab": 14.0
+    },
+    "uppercut": {
+      "jab": 35.0,
+      "cross": 14.0,
+      "hook": 23.0,
+      "uppercut": 6.0
+    },
+    "cross": {
+      "hook": 43.0,
+      "uppercut": 11.0,
+      "jab": 23.0,
+      "cross": 8.0
+    },
+    "hook": {
+      "hook": 10.8464,
+      "uppercut": 34.0,
+      "cross": 27.92,
+      "jab": 35.0
+    }
+  },
+  "total_transitions": 386,
+  "last_updated": "2026-03-23T14:45:15",
+  "username": "global"
+}

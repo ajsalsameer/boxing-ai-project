@@ -1,0 +1,368 @@
+.wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.page {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 300px 360px;
+  gap: 14px;
+  padding: 14px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.colLabel {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: rgba(0, 220, 255, 0.4);
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+/* Camera */
+.camCol {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.camWrap {
+  flex: 1;
+  border: 1px solid var(--c-border);
+  overflow: hidden;
+  min-height: 0;
+}
+
+.camFooter {
+  margin-top: 12px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stopCam {
+  width: 100%;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+/* HUD */
+.hudCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Command box */
+.cmdBox {
+  flex-shrink: 0;
+  padding: 24px 20px;
+  text-align: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.cmdLabel {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: var(--neon-red);
+  opacity: 0.7;
+  margin-bottom: 14px;
+}
+
+.cmdText {
+  font-family: var(--font-hud);
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 8px;
+  line-height: 1;
+  animation: cmdPulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes cmdPulse {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0.75
+  }
+}
+
+.cmdIdle {
+  font-family: var(--font-hud);
+  font-size: 36px;
+  color: #222;
+  letter-spacing: 4px;
+}
+
+.cmdDone {
+  font-family: var(--font-hud);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--neon-green);
+  letter-spacing: 4px;
+  text-shadow: 0 0 20px var(--neon-green);
+}
+
+.cmdWait {
+  font-family: var(--font-hud);
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #444;
+}
+
+.cmdTimer {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #444;
+  margin-top: 10px;
+}
+
+/* Feedback */
+.feedbackBox {
+  flex-shrink: 0;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.2s, transform 0.2s;
+  border: none;
+}
+
+.feedbackBox::before {
+  display: none;
+}
+
+.feedbackVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feedbackText {
+  font-family: var(--font-hud);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 10px 20px;
+  border: 1px solid;
+  width: 100%;
+  text-align: center;
+  animation: pop-in 0.2s ease;
+}
+
+/* Stats */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.statBox {
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
+  padding: 14px 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.statBox::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+  opacity: 0.3;
+}
+
+.statLabel {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.statVal {
+  font-family: var(--font-hud);
+  font-size: 26px;
+  font-weight: 700;
+  color: #ccd6f6;
+}
+
+/* Hint box */
+.hintBox {
+  padding: 20px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.hintTitle {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: rgba(0, 220, 255, 0.4);
+  margin-bottom: 16px;
+}
+
+.hints {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hintRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: rgba(204, 214, 246, 0.45);
+}
+
+.hintNum {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  color: var(--neon-blue);
+  letter-spacing: 2px;
+}
+
+/* Done */
+.doneBox {
+  padding: 22px;
+  animation: slide-up 0.3s ease;
+  flex-shrink: 0;
+}
+
+.doneTitle {
+  font-family: var(--font-hud);
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: var(--neon-yellow);
+  margin-bottom: 14px;
+  text-shadow: 0 0 12px var(--neon-yellow);
+}
+
+.doneStats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: rgba(204, 214, 246, 0.6);
+}
+
+/* Tech */
+.techCol {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.techColHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.techWrap {
+  flex: 1;
+  border: 1px solid var(--c-border);
+  overflow: hidden;
+  min-height: 0;
+}
+
+.techHint {
+  margin-top: 10px;
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #444;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.animToggle {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 3px;
+  padding: 3px 10px;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.animToggle:hover {
+  opacity: 0.8;
+}
+
+.animOff {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--c-surface);
+}
+
+.animOffIcon {
+  font-size: 28px;
+  color: #1a2030;
+}
+
+.animOffText {
+  font-family: var(--font-hud);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #1e2840;
+}
+
+.animOffSub {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #151d2a;
+}
+
+/* Offline banner */
+.offlineBanner {
+  background: rgba(255, 23, 68, 0.08);
+  border: 1px solid rgba(255, 23, 68, 0.35);
+  color: #ff6b6b;
+  font-family: var(--font-hud);
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 10px 18px;
+  flex-shrink: 0;
+}
+
+.offlineBanner code {
+  color: #ffea00;
+  font-family: var(--font-mono);
+  background: rgba(255, 234, 0, 0.08);
+  padding: 1px 6px;
+}

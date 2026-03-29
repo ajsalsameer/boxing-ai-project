@@ -1,0 +1,150 @@
+.nav {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  background: rgba(4,4,10,0.95);
+  border-bottom: 1px solid var(--c-border);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+.nav::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--neon-blue) 30%, var(--neon-purple) 70%, transparent 100%);
+  opacity: 0.5;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.logoIcon {
+  font-size: 22px;
+  filter: drop-shadow(0 0 8px var(--neon-blue));
+}
+.logoText {
+  font-family: var(--font-hud);
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 4px;
+  color: #fff;
+}
+.logoText em {
+  font-style: normal;
+  color: var(--neon-red);
+  text-shadow: 0 0 12px var(--neon-red);
+}
+
+/* Links */
+.links {
+  display: flex;
+  gap: 4px;
+}
+.link {
+  font-family: var(--font-hud);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 8px 20px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: rgba(204,214,246,0.35);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+.link:hover {
+  color: var(--neon-blue);
+  border-color: var(--c-border-hi);
+  background: rgba(0,220,255,0.05);
+}
+.active {
+  color: var(--neon-blue) !important;
+  border-color: var(--c-border-hi) !important;
+  background: rgba(0,220,255,0.08) !important;
+  box-shadow: 0 0 12px rgba(0,220,255,0.1) inset;
+}
+.linkIcon {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Status */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-red);
+  box-shadow: 0 0 8px var(--neon-red);
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+.dotLive {
+  background: var(--neon-green);
+  box-shadow: 0 0 8px var(--neon-green);
+  animation: none;
+}
+.statusText {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: rgba(204,214,246,0.4);
+}
+
+/* ── right side ── */
+.right {
+  display: flex; align-items: center; gap: 12px;
+}
+.userBadge {
+  display: flex; align-items: center; gap: 7px;
+  padding: 5px 12px;
+  border: 1px solid var(--c-border-hi);
+  background: rgba(0,220,255,0.05);
+  cursor: pointer; transition: all 0.2s;
+}
+.userBadge:hover { background: rgba(0,220,255,0.10); }
+.userIcon { font-size: 13px; }
+.userName {
+  font-family: var(--font-hud); font-size: 10px;
+  letter-spacing: 2px; color: #fff;
+}
+.modelBadge {
+  font-family: var(--font-hud); font-size: 8px;
+  letter-spacing: 1px; color: var(--neon-green);
+}
+.loginHint {
+  font-family: var(--font-hud); font-size: 9px;
+  letter-spacing: 2px; color: var(--neon-yellow);
+  background: rgba(255,234,0,0.05);
+  border: 1px solid rgba(255,234,0,0.3);
+  padding: 5px 12px; cursor: pointer;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* highlight tab (Training) */
+.highlight {
+  color: var(--neon-yellow) !important;
+  border-color: rgba(255,234,0,0.3) !important;
+}
+.highlight:hover, .highlight.active {
+  background: rgba(255,234,0,0.08) !important;
+  border-color: var(--neon-yellow) !important;
+  color: var(--neon-yellow) !important;
+  box-shadow: 0 0 12px rgba(255,234,0,0.1) inset !important;
+}

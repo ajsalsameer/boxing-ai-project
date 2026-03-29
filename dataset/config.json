@@ -1,0 +1,27 @@
+{
+  "window_size": 30,
+  "overlap": 15,
+  "min_movement_thresh": 0.015,
+  "classes": [
+    "jab",
+    "cross",
+    "hook",
+    "uppercut"
+  ],
+  "output_dir": "dataset",
+  "landmarks_used": [
+    0,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    23,
+    24
+  ]
+}

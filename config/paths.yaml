@@ -1,0 +1,6 @@
+data_root: "./data"
+raw_videos: "./data/raw_videos"
+clips: "./data/clips"
+keypoints: "./data/keypoints/hrnet"
+synthetic: "./data/synthetic"
+labels_csv: "./data/labels/labels_final.csv"

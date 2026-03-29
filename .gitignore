@@ -1,0 +1,29 @@
+# Python virtual environment
+venv/
+env/
+
+# Node/React dependencies (CRITICAL)
+node_modules/
+frontend/node_modules/
+
+# Videos and heavy files
+*.mp4
+*.avi
+videos/
+
+# Python cache
+__pycache__/
+*.pyc
+# Ignore the entire video folder
+boxingvi/
+
+# Ignore the dataset file
+data/boxing_ultra_dataset.pkl
+*.pkl
+
+boxingvi/
+data/
+*.mp4
+*.pkl
+venv/
+__pycache__/

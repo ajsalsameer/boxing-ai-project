@@ -1,0 +1,15 @@
+{
+  "model_type": "hybrid_mlp",
+  "input_dim": 96,
+  "num_classes": 4,
+  "feat_dim": 84,
+  "history_len": 3,
+  "labels": [
+    "cross",
+    "hook",
+    "jab",
+    "uppercut"
+  ],
+  "val_accuracy": 0.9555,
+  "uses_scaler": true
+}

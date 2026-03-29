@@ -1,0 +1,913 @@
+/* ═══════════════════════════════════════════════════════════
+   HOME PAGE
+   Sections: Hero · ContainerScroll · Feature Cards · CTA
+═══════════════════════════════════════════════════════════ */
+
+/* ── Page wrapper — scrollable ────────────────────────────── */
+.page {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.page::-webkit-scrollbar {
+  width: 3px;
+}
+
+.page::-webkit-scrollbar-track {
+  background: var(--c-bg);
+}
+
+.page::-webkit-scrollbar-thumb {
+  background: var(--c-border-hi);
+}
+
+/* ── Keyframes defined locally — self-contained, no index.css dependency ──
+   CSS Modules can fail to resolve animation names from global stylesheets
+   in some Vite configs. Define everything here to guarantee it works.  ── */
+
+@keyframes spotlightFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Used on: heroCard, heroBadge, heroTitle, heroSubtitle,
+            userBanner, newUserBanner, heroBtns, heroHint */
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Used on: newUserBanner */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(255, 234, 0, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 18px rgba(255, 234, 0, 0.6);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 1 — HERO
+═══════════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 60px;
+  overflow: hidden;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 220, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 220, 255, 0.032) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Hero split card */
+.heroInner {
+  display: flex;
+  height: 500px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1100px;
+  background: rgba(4, 4, 10, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 220, 255, 0.05), 0 24px 80px rgba(0, 0, 0, 0.6);
+  animation: slide-up 0.5s ease both;
+}
+
+.heroLeft {
+  flex: 1;
+  padding: 52px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  position: relative;
+}
+
+.heroBadge {
+  display: inline-block;
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--neon-blue);
+  border: 1px solid var(--c-border-hi);
+  padding: 5px 16px;
+  background: rgba(0, 220, 255, 0.06);
+  width: fit-content;
+  opacity: 0;
+  animation: slide-up 0.4s 0.1s ease forwards;
+}
+
+.heroTitle {
+  line-height: 0.82;
+  user-select: none;
+  opacity: 0;
+  animation: slide-up 0.5s 0.15s ease forwards;
+}
+
+.heroTitleBoxing {
+  display: block;
+  font-family: var(--font-hud);
+  font-size: clamp(42px, 5.5vw, 80px);
+  font-weight: 900;
+  letter-spacing: 12px;
+  background: linear-gradient(180deg, #f5f5f5 0%, #a3a3a3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroTitleAI {
+  display: block;
+  font-family: var(--font-hud);
+  font-size: clamp(64px, 9vw, 118px);
+  font-weight: 900;
+  letter-spacing: 24px;
+  color: var(--neon-red);
+  -webkit-text-fill-color: var(--neon-red);
+  text-shadow: 0 0 60px rgba(255, 23, 68, 0.55), 0 0 120px rgba(255, 23, 68, 0.2);
+  animation: titlePulse 3s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+
+  0%,
+  100% {
+    text-shadow: 0 0 60px rgba(255, 23, 68, 0.55), 0 0 120px rgba(255, 23, 68, 0.2);
+  }
+
+  50% {
+    text-shadow: 0 0 80px rgba(255, 23, 68, 0.85), 0 0 150px rgba(255, 23, 68, 0.35);
+  }
+}
+
+.heroSubtitle {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: rgba(212, 212, 212, 0.55);
+  line-height: 1.7;
+  opacity: 0;
+  animation: slide-up 0.5s 0.2s ease forwards;
+}
+
+.userBanner {
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: rgba(204, 214, 246, 0.55);
+  padding: 9px 16px;
+  border: 1px solid var(--c-border);
+  background: rgba(0, 220, 255, 0.04);
+  width: fit-content;
+  opacity: 0;
+  animation: slide-up 0.5s 0.25s ease forwards;
+}
+
+.userBanner strong {
+  color: #fff;
+}
+
+.modelReady {
+  color: var(--neon-green);
+}
+
+.modelNeeded {
+  color: var(--neon-yellow);
+  cursor: pointer;
+}
+
+.userBannerIcon {
+  margin-right: 8px;
+}
+
+.newUserBanner {
+  font-family: var(--font-hud);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--neon-yellow);
+  cursor: pointer;
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 234, 0, 0.2);
+  background: rgba(255, 234, 0, 0.04);
+  width: fit-content;
+  animation: pulse-glow 2s ease-in-out infinite, slide-up 0.5s 0.25s ease forwards;
+  opacity: 0;
+}
+
+.heroBtns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: slide-up 0.5s 0.3s ease forwards;
+}
+
+.heroHint {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: rgba(204, 214, 246, 0.15);
+  opacity: 0;
+  animation: slide-up 0.5s 0.4s ease forwards;
+}
+
+.heroRight {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.heroAnimLabel {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: rgba(0, 220, 255, 0.3);
+  z-index: 4;
+}
+
+.heroAnimFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.heroAnimCornerTL,
+.heroAnimCornerTR,
+.heroAnimCornerBL,
+.heroAnimCornerBR {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  z-index: 4;
+}
+
+.heroAnimCornerTL {
+  top: 0;
+  left: 0;
+  border-top: 2px solid rgba(0, 220, 255, 0.4);
+  border-left: 2px solid rgba(0, 220, 255, 0.4);
+}
+
+.heroAnimCornerTR {
+  top: 0;
+  right: 0;
+  border-top: 2px solid rgba(0, 220, 255, 0.4);
+  border-right: 2px solid rgba(0, 220, 255, 0.4);
+}
+
+.heroAnimCornerBL {
+  bottom: 0;
+  left: 0;
+  border-bottom: 2px solid rgba(0, 220, 255, 0.4);
+  border-left: 2px solid rgba(0, 220, 255, 0.4);
+}
+
+.heroAnimCornerBR {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid rgba(0, 220, 255, 0.4);
+  border-right: 2px solid rgba(0, 220, 255, 0.4);
+}
+
+.heroScrollHint {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: rgba(204, 214, 246, 0.18);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+}
+
+.heroScrollDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--neon-blue);
+  box-shadow: 0 0 8px var(--neon-blue);
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(6px);
+    opacity: 0.4;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   INTERACTIVE HOVER BUTTON
+═══════════════════════════════════════════════════════════ */
+.hoverBtn {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--btn-color, var(--neon-blue));
+  background: transparent;
+  color: var(--btn-color, var(--neon-blue));
+  font-family: var(--font-hud);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 12px 28px;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  min-width: 158px;
+  transition: color 0.3s;
+}
+
+.hoverBtnSecondary {
+  opacity: 0.7;
+}
+
+.hoverBtnText {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hoverBtn:hover .hoverBtnText {
+  transform: translateX(42px);
+  opacity: 0;
+}
+
+.hoverBtnReveal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  z-index: 2;
+  color: var(--c-bg);
+  font-family: var(--font-hud);
+  font-size: 10px;
+  letter-spacing: 3px;
+  opacity: 0;
+  transform: translateX(-42px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hoverBtn:hover .hoverBtnReveal {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.hoverBtnArrow {
+  font-size: 14px;
+}
+
+.hoverBtnBg {
+  position: absolute;
+  bottom: 30%;
+  left: 10%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--btn-color, var(--neon-blue));
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.hoverBtn:hover .hoverBtnBg {
+  left: -5%;
+  bottom: -5%;
+  width: 115%;
+  height: 130%;
+  border-radius: 0;
+}
+
+.hoverBtn:hover {
+  color: var(--c-bg);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 2 — CONTAINERSCROLL
+   The .scrollSection wrapper adds gradient bg around the ContainerScroll.
+   The ContainerScroll inner divs control their own height.
+═══════════════════════════════════════════════════════════ */
+.scrollSection {
+  background: linear-gradient(180deg, var(--c-bg) 0%, #060611 40%, #060611 60%, var(--c-bg) 100%);
+  border-top: 1px solid var(--c-border);
+}
+
+/* ── ContainerScroll outer — TALL by design ─────────────────
+   960px mobile | 1280px desktop
+   This height is not a mistake. The user scrolls through all of it
+   while the card rotates 20°→0°. Reducing this kills the effect.
+────────────────────────────────────────────────────────── */
+.scrollContainer {
+  height: 960px;
+  /* mobile — h-[60rem] */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 8px;
+}
+
+.scrollContainerDesktop {
+  height: 1280px;
+  /* desktop — h-[80rem] */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 80px;
+}
+
+/* Inner wrapper with perspective — gives the 3D space */
+.scrollInner {
+  padding: 40px 0 160px;
+  /* py-10 md:py-40 */
+  width: 100%;
+  position: relative;
+  perspective: 1000px;
+}
+
+/* Title wrapper — translateY animated by framer */
+.scrollTitleWrap {
+  max-width: 860px;
+  margin: 0 auto 0;
+  text-align: center;
+}
+
+/* Title content inside the motion div */
+.scrollTitleBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.scrollBadge {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: rgba(0, 220, 255, 0.5);
+  border: 1px solid var(--c-border);
+  padding: 4px 14px;
+}
+
+.scrollHeading {
+  font-family: var(--font-hud);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 900;
+  letter-spacing: 8px;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.scrollHeadingAccent {
+  color: var(--neon-blue);
+  text-shadow: 0 0 30px rgba(0, 220, 255, 0.5);
+}
+
+.scrollSubtitle {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: rgba(204, 214, 246, 0.35);
+  text-transform: uppercase;
+}
+
+/* The 3D card — rotateX + scale animated by framer */
+.scrollCard {
+  /* -mt-12: overlaps title to create depth layering */
+  margin-top: -48px;
+  max-width: 860px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  /* border-4 border-[#6C6C6C] bg-[#222222] rounded-[30px] */
+  border: 3px solid #555;
+  border-radius: 24px;
+  background: #1c1c24;
+  padding: 8px;
+  /* h-[30rem] md:h-[40rem] */
+  height: 480px;
+}
+
+.scrollCardInner {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #0a0a14;
+  padding: 20px;
+}
+
+/* App preview mock inside the card */
+.previewCols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  height: 100%;
+}
+
+.previewCol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.previewLabel {
+  font-family: var(--font-hud);
+  font-size: 7px;
+  letter-spacing: 3px;
+  color: rgba(0, 220, 255, 0.4);
+}
+
+.previewCam {
+  flex: 1;
+  border: 1px solid rgba(0, 220, 255, 0.14);
+  background: #040408;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.previewCamInner {
+  text-align: center;
+}
+
+.previewCamIcon {
+  display: block;
+  font-size: 26px;
+}
+
+.previewCamText {
+  display: block;
+  font-family: var(--font-hud);
+  font-size: 7px;
+  letter-spacing: 2px;
+  color: var(--neon-green);
+  margin-top: 8px;
+}
+
+.previewBtn {
+  height: 26px;
+  background: rgba(0, 230, 118, 0.15);
+  border: 1px solid rgba(0, 230, 118, 0.3);
+}
+
+.previewHud {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+.previewBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.previewBarName {
+  font-family: var(--font-hud);
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: rgba(204, 214, 246, 0.4);
+  width: 50px;
+  text-align: right;
+}
+
+.previewBarTrack {
+  flex: 1;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.previewBarFill {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.previewMoveBox {
+  margin-top: 10px;
+  font-family: var(--font-hud);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 5px;
+  color: #ffea00;
+  text-shadow: 0 0 24px #ffea0099;
+  text-align: center;
+}
+
+.previewAnimBox {
+  flex: 1;
+  border: 1px solid rgba(0, 220, 255, 0.14);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.previewAnimIcon {
+  font-size: 38px;
+}
+
+.previewAnimText {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: rgba(0, 220, 255, 0.35);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 3 — FEATURE CARDS
+═══════════════════════════════════════════════════════════ */
+.cardsSection {
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  border-top: 1px solid var(--c-border);
+}
+
+.cardsSectionHeader {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.cardsBadge {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: rgba(255, 23, 68, 0.6);
+  border: 1px solid rgba(255, 23, 68, 0.2);
+  padding: 4px 14px;
+}
+
+.cardsHeading {
+  font-family: var(--font-hud);
+  font-size: clamp(24px, 3.5vw, 42px);
+  font-weight: 900;
+  letter-spacing: 8px;
+  color: #fff;
+}
+
+.cardsSubtitle {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: rgba(204, 214, 246, 0.3);
+  text-transform: uppercase;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  width: 100%;
+}
+
+.featureCard {
+  position: relative;
+  overflow: hidden;
+  padding: 32px 28px 28px;
+  background: rgba(8, 8, 18, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.3s, transform 0.25s;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+
+.featureCard:hover {
+  border-color: var(--card-color);
+  transform: translateY(-5px);
+}
+
+.featureCard:hover .featureCardGlow {
+  opacity: 1;
+}
+
+.featureCard:hover .featureCardArrow {
+  color: var(--card-color);
+  transform: translateX(6px);
+}
+
+.featureCard:hover .featureCardLine {
+  width: 100%;
+}
+
+.featureCardLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 40px;
+  background: var(--card-color);
+  box-shadow: 0 0 10px var(--card-color);
+  transition: width 0.4s ease;
+}
+
+.featureCardNum {
+  font-family: var(--font-hud);
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  color: rgba(255, 255, 255, 0.04);
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  line-height: 1;
+  user-select: none;
+}
+
+.featureCardTag {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--card-color);
+  opacity: 0.7;
+}
+
+.featureCardIcon {
+  font-size: 30px;
+  margin-top: 4px;
+}
+
+.featureCardTitle {
+  font-family: var(--font-hud);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #fff;
+}
+
+.featureCardSub {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.65;
+  color: rgba(204, 214, 246, 0.42);
+  flex: 1;
+}
+
+.featureCardArrow {
+  font-size: 18px;
+  color: rgba(204, 214, 246, 0.2);
+  transition: color 0.25s, transform 0.25s;
+  margin-top: 6px;
+}
+
+.featureCardGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, var(--card-color), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.35s;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(24px);
+}
+
+.featureCardCorner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 4 — CTA
+═══════════════════════════════════════════════════════════ */
+.ctaSection {
+  position: relative;
+  padding: 100px 40px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid var(--c-border);
+  overflow: hidden;
+}
+
+.ctaGlow {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(255, 23, 68, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ctaContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 600px;
+}
+
+.ctaBadge {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--neon-red);
+  border: 1px solid rgba(255, 23, 68, 0.3);
+  padding: 4px 16px;
+  background: rgba(255, 23, 68, 0.05);
+}
+
+.ctaHeading {
+  font-family: var(--font-hud);
+  font-size: clamp(32px, 5vw, 58px);
+  font-weight: 900;
+  letter-spacing: 10px;
+  color: #fff;
+}
+
+.ctaSubtitle {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: rgba(204, 214, 246, 0.38);
+  text-transform: uppercase;
+}
+
+.ctaBtns {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.ctaHint {
+  font-family: var(--font-hud);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: rgba(204, 214, 246, 0.18);
+  margin-top: 8px;
+}

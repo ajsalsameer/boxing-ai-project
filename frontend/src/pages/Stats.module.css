@@ -1,0 +1,133 @@
+.page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 20px;
+  min-height: 0;
+  overflow: hidden;
+}
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.pageTitle { }
+.pageTitleHud {
+  font-family: var(--font-hud);
+  font-size: 10px; letter-spacing: 5px;
+  color: rgba(0,220,255,0.5);
+}
+.liveBadge {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-hud); font-size: 9px; letter-spacing: 3px;
+  color: var(--neon-red);
+  border: 1px solid var(--neon-red);
+  padding: 5px 14px;
+  background: rgba(255,23,68,0.06);
+}
+.liveDot {
+  width:7px; height:7px; border-radius:50%;
+  background: var(--neon-red);
+  box-shadow: 0 0 8px var(--neon-red);
+  animation: pulse-glow 1s ease-in-out infinite;
+}
+
+/* Live row */
+.liveRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  flex-shrink: 0;
+}
+.liveCard {
+  padding: 14px;
+  text-align: center;
+}
+.liveVal {
+  font-family: var(--font-hud);
+  font-size: 32px; font-weight: 900;
+  margin-top: 8px;
+}
+
+/* Main grid */
+.mainGrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 240px 280px;
+  gap: 12px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* History table */
+.histPanel { display:flex; flex-direction:column; overflow:hidden; }
+.tableWrap { flex:1; overflow-y:auto; padding:0 18px 14px; }
+.table { width:100%; border-collapse:collapse; }
+.table th {
+  font-family: var(--font-hud);
+  font-size: 8px; letter-spacing: 3px;
+  color: rgba(204,214,246,0.3);
+  text-align: left; padding: 8px 12px;
+  border-bottom: 1px solid var(--c-border);
+}
+.table td {
+  font-family: var(--font-body);
+  font-size: 13px; letter-spacing: 1px;
+  color: rgba(204,214,246,0.6);
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.table tr:hover td { background: rgba(0,220,255,0.03); }
+.tdNum { font-family:var(--font-hud); font-size:10px; color:#444; }
+.repsTag {
+  font-family: var(--font-hud); font-size:11px;
+  color: var(--neon-blue); letter-spacing:1px;
+}
+
+/* Charts */
+.chartsCol { display:flex; flex-direction:column; gap:10px; overflow:hidden; }
+.chartCard { flex:1; display:flex; flex-direction:column; overflow:hidden; padding-bottom:14px; min-height:0; }
+.chartWrap { flex:1; padding:0 16px; min-height:0; display:flex; flex-direction:column; }
+.chartLabel { font-family:var(--font-hud); font-size:8px; letter-spacing:2px; color:#444; margin-bottom:6px; flex-shrink:0; }
+.chartBars { flex:1; display:flex; align-items:flex-end; gap:4px; min-height:0; }
+.chartBarCol { flex:1; height:100%; display:flex; align-items:flex-end; }
+.chartBar { width:100%; min-height:2px; transition:height 0.4s; border-radius:2px 2px 0 0; }
+
+/* Distribution */
+.distPanel { display:flex; flex-direction:column; overflow:hidden; padding-bottom:16px; }
+.distGrid { display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:0 18px; margin-bottom:16px; justify-items:center; }
+.distItem { display:flex; flex-direction:column; align-items:center; gap:8px; }
+.distName { font-family:var(--font-hud); font-size:9px; letter-spacing:3px; }
+.ring { display:block; }
+.avgRow { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:0 18px; margin-bottom:12px; }
+.avgCard { padding:12px; text-align:center; }
+.avgVal { font-family:var(--font-hud); font-size:24px; font-weight:700; margin-top:6px; }
+.noDataNote { font-family:var(--font-body); font-size:10px; letter-spacing:1px; color:#333; padding:0 18px; line-height:1.6; }
+
+/* ── Top transitions (personal) ── */
+.transCard { padding: 0 0 14px; flex-shrink: 0; }
+.transRow { display:flex; align-items:center; gap:10px; padding:4px 16px; }
+.transPair { font-family:var(--font-mono); font-size:11px; color:rgba(204,214,246,0.7); width:130px; flex-shrink:0; }
+.transBar { flex:1; height:5px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); }
+.transBarFill { height:100%; background:var(--neon-blue); transition:width 0.4s; }
+.transCount { font-family:var(--font-hud); font-size:9px; color:#555; width:26px; text-align:right; }
+
+/* ── Profile totals ── */
+.totalCard { flex-shrink:0; }
+.totalGrid { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+.totalItem { padding:14px 16px; text-align:center; border:1px solid rgba(255,255,255,0.03); }
+.totalVal  { font-family:var(--font-hud); font-size:26px; font-weight:700; }
+.totalLabel{ font-family:var(--font-hud); font-size:7px; letter-spacing:3px; color:#444; margin-top:4px; }
+
+/* ── Dist panel ── */
+.distPanel  { display:flex; flex-direction:column; gap:10px; overflow-y:auto; }
+.distCard   { flex-shrink:0; }
+.distGrid   { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:0 18px 16px; justify-items:center; }
+.distItem   { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.distName   { font-family:var(--font-hud); font-size:9px; letter-spacing:3px; }
+
+/* ── No data ── */
+.noData    { font-family:var(--font-hud); font-size:9px; letter-spacing:2px; color:#333; padding:20px 18px; line-height:1.8; }
+.noDataSm  { font-family:var(--font-hud); font-size:9px; letter-spacing:2px; color:#333; padding:14px 16px; }
